@@ -95,7 +95,15 @@ function generateNewStructure( structure ){
 // Returns a random work the number of syllables provided with syllableNum from twoD_ArrayRef
 
 function gethaikuWordWithSyllableCount( twoD_ArrayRef, syllableNum) {
-	return twoD_ArrayRef[syllableNum][Math.floor(Math.random() * twoD_ArrayRef[syllableNum].length ) + 1];
+	var selectedWord = twoD_ArrayRef[syllableNum][Math.floor(Math.random() * twoD_ArrayRef[syllableNum].length ) + 1];
+
+	// Strip off the (#) if the word has one
+	if( /\(\d+\)$/.test( selectedWord ) ) {
+		selectedWord = selectedWord.replace( /\(\d+\)$/, "");
+	}
+	
+
+	return selectedWord;
 }
 
 /****** EXPORTING FUNCTIONS ******/
